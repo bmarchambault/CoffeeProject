@@ -8,23 +8,25 @@ function renderCoffee(coffee) {
     html += '</div>';
     return html;
 }
+
 //taking data from coffee array and giving it to 'rendered coffee'
 function renderCoffees(coffees) {
     var html = '';
-    for(var i = coffees.length - 1; i >= 0; i--) {
+    for (var i = coffees.length - 1; i >= 0; i--) {
         html += renderCoffee(coffees[i]);
     }
     return html;
 }
+
 //first form
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     var selectedRoast = roastSelection.value;
     var userInput = userSearch.value.toLowerCase();
     var filteredCoffees = []; //create empty array to hold the for each return value
-    coffees.forEach(function(coffee) {
+    coffees.forEach(function (coffee) {
         var arrayNameLower = coffee.name.toLowerCase();
-        if (arrayNameLower.startsWith(userInput)  && coffee.roast === selectedRoast) {
+        if (arrayNameLower.startsWith(userSearchInput) && coffee.roast === selectedRoast) {
             filteredCoffees.push(coffee);
         }
     });
@@ -50,25 +52,25 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+// function createCoffeeNameArray(array) {
+//     var coffeeNameArr = [];
+//     coffees.forEach(function (coffee) {
+//         coffeeNameArr.push(coffee.name);
+//         // console.log(coffeeNameArr);
+//     });
+//     return coffeeNameArr
+// }
+//
+// createCoffeeNameArray(coffees)
+// // console.log(coffeeNameList(coffees));
+//
+// // coffeeNameList(coffees);
 
-//create a function that makes just a name array to reference in th add coffee function
-function coffeeNameList(coffees){
-    coffees.forEach(function(coffee){
-        if(userInput.value !== coffee.name) {
-            var newCoffee = {
-                id: id,
-                name: userValue,
-                roast: userInputRoast
-            };
-
-}
-
-        //need to complete
-function addUsersCoffee(e){
+function addUsersCoffee(e) {
     e.preventDefault();
     var userInput = document.getElementById('user-addCoffee');
     var msg = document.querySelector('.msg')
-    var userInputRoast = roastSelection2.value;
+    var userSelectRoast = roastSelection2.value;
     var id = coffees.length - 1;
     if (userInput.value === '') {
         msg.innerHTML = "please enter a new coffee name";
@@ -76,23 +78,68 @@ function addUsersCoffee(e){
         setTimeout(function () {
             msg.remove();
         }, 3000);
+
+    } else if (testCoffee(userInput.value)) {
+        msg.innerHTML = "please enter a new coffee name";
+
+        setTimeout(function () {
+            msg.remove();
+        }, 3000);
     }else {
-            coffees.push(newCoffee);
-            updateCoffees();
+
+    var newCoffee = {
+        id: id,
+        name: userInput,
+        roast: userSelectRoast
+    };
+    coffees.push(newCoffee);
+
+}
+updateCoffees();
+}
+
+
+function testCoffee(coffeeName) {
+    var random = false;
+    for (var i = 0; i < coffees.length; i++) {
+        if (userInput.value === coffees[i].name) {
+            random = true;
         }
-    });
+    }
+    return random;
 }
 
 
 var coffeeListBody = document.querySelector('#coffees');
 var roastSelection = document.querySelector('#roast-selection');
-var userSearch = document.querySelector('#user-search');
+var userSearch = document.querySelector('#user-search')
+var userSearchInput = userSearch.value.toLowerCase();
 var roastSelection2 = document.querySelector('#roast-selection2');
 
 var submitButton = document.querySelector('#submit');
-submitButton.addEventListener('submit', addUsersCoffee);
+submitButton.addEventListener('click', addUsersCoffee);
 
 coffeeListBody.innerHTML = renderCoffees(coffees); //displaying the output from the 'rendered coffee & rendered coffees' functions to html table
 
 roastSelection.addEventListener('change', updateCoffees); //updates user selection list using the top three functions...
 userSearch.addEventListener('keyup', updateCoffees);
+
+
+//original bobbie and shelby function:
+// function addUsersCoffee(e){
+//     e.preventDefault();
+//     var userValue = document.getElementById('user-addCoffee').value;
+//     var userInputRoast = roastSelection2.value;
+//     var id = coffees.length - 1;
+//     coffees.forEach(function(coffee){
+//         if(userValue !== coffee.name) {
+//             var newCoffee = {
+//                 id: id,
+//                 name: userValue,
+//                 roast: userInputRoast
+//             };
+//             coffees.push(newCoffee);
+//             updateCoffees();
+//         }
+//     });
+// }
