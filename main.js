@@ -72,7 +72,7 @@ function addUsersCoffee(e) {
     var msg = document.querySelector('.msg')
     var userSelectRoast = roastSelection2.value;
     var id = coffees.length - 1;
-
+    // console.log(userInput);
     if (userInput !== null){
         testCoffeeNameIsNew(userInput);
         if(coffeeExists === false) {
@@ -123,7 +123,7 @@ function addUsersCoffee(e) {
     // coffees.push(newCoffee);
 
 }
-updateCoffees();
+updateCoffees(e);
 }
 
 
