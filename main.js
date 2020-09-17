@@ -26,7 +26,7 @@ function updateCoffees(e) {
     var filteredCoffees = []; //create empty array to hold the for each return value
     coffees.forEach(function (coffee) {
         var arrayNameLower = coffee.name.toLowerCase();
-        if (arrayNameLower.startsWith(userSearchInput) && coffee.roast === selectedRoast) {
+        if (arrayNameLower.startsWith(userSearchInput) && (coffee.roast === selectedRoast)) {
             filteredCoffees.push(coffee);
         }
     });
@@ -65,48 +65,76 @@ var coffees = [
 // // console.log(coffeeNameList(coffees));
 //
 // // coffeeNameList(coffees);
-
+var coffeeExists = false;
 function addUsersCoffee(e) {
     e.preventDefault();
-    var userInput = document.getElementById('user-addCoffee');
+    var userInput = document.getElementById('user-addCoffee').value;
     var msg = document.querySelector('.msg')
     var userSelectRoast = roastSelection2.value;
     var id = coffees.length - 1;
-    if (userInput.value === '') {
-        msg.innerHTML = "please enter a new coffee name";
+
+    if (userInput !== null){
+        testCoffeeNameIsNew(userInput);
+        if(coffeeExists === false) {
+            var newCoffee = {
+                id: id,
+                name: userInput,
+                roast: userSelectRoast
+            };
+            coffees.push(newCoffee);
+
+        } else {
+            msg.innerHTML = "please enter a new coffee name";
+
+            setTimeout(function () {
+                msg.remove();
+            }, 3000);
+        }
+    } else {
+        msg.innerHTML = "please enter a coffee name";
 
         setTimeout(function () {
             msg.remove();
         }, 3000);
 
-    } else if (testCoffee(userInput.value)) {
-        msg.innerHTML = "please enter a new coffee name";
 
-        setTimeout(function () {
-            msg.remove();
-        }, 3000);
-    }else {
+    // if (userInput.value === '') {
+    //     msg.innerHTML = "please enter a new coffee name";
+    //
+    //     setTimeout(function () {
+    //         msg.remove();
+    //     }, 3000);
+    //
+    // }
 
-    var newCoffee = {
-        id: id,
-        name: userInput,
-        roast: userSelectRoast
-    };
-    coffees.push(newCoffee);
+    // if (testCoffee(userInput.value)) {
+    //     msg.innerHTML = "please enter a new coffee name";
+    //
+    //     setTimeout(function () {
+    //         msg.remove();
+    //     }, 3000);
+    // }else {
+
+    // var newCoffee = {
+    //     id: id,
+    //     name: userInput,
+    //     roast: userSelectRoast
+    // };
+    // coffees.push(newCoffee);
 
 }
 updateCoffees();
 }
 
 
-function testCoffee(coffeeName) {
-    var random = false;
+function testCoffeeNameIsNew(userInput) {
+    // var coffeeExists = false;
     for (var i = 0; i < coffees.length; i++) {
-        if (userInput.value === coffees[i].name) {
-            random = true;
+        if (userInput === coffees[i].name) {
+            coffeeExists = true;
         }
     }
-    return random;
+    return coffeeExists;
 }
 
 
@@ -116,7 +144,7 @@ var userSearch = document.querySelector('#user-search')
 var userSearchInput = userSearch.value.toLowerCase();
 var roastSelection2 = document.querySelector('#roast-selection2');
 
-var submitButton = document.querySelector('#submit');
+var submitButton = document.querySelector('#submitNewCoffee');
 submitButton.addEventListener('click', addUsersCoffee);
 
 coffeeListBody.innerHTML = renderCoffees(coffees); //displaying the output from the 'rendered coffee & rendered coffees' functions to html table
