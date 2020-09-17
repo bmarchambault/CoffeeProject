@@ -52,20 +52,8 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
-// function createCoffeeNameArray(array) {
-//     var coffeeNameArr = [];
-//     coffees.forEach(function (coffee) {
-//         coffeeNameArr.push(coffee.name);
-//         // console.log(coffeeNameArr);
-//     });
-//     return coffeeNameArr
-// }
-//
-// createCoffeeNameArray(coffees)
-// // console.log(coffeeNameList(coffees));
-//
-// // coffeeNameList(coffees);
 var coffeeExists = false;
+
 function addUsersCoffee(e) {
     e.preventDefault();
     var userInput = document.getElementById('user-addCoffee').value;
@@ -73,59 +61,34 @@ function addUsersCoffee(e) {
     var userSelectRoast = roastSelection2.value;
     var id = coffees.length - 1;
     // console.log(userInput);
-    if (userInput !== null){
+    if (userInput !== null) {
         testCoffeeNameIsNew(userInput);
-        if(coffeeExists === false) {
+
+        if ((coffeeExists === false) && (userSelectRoast !== "select a roast")) {
             var newCoffee = {
                 id: id,
                 name: userInput,
                 roast: userSelectRoast
             };
             coffees.push(newCoffee);
+            // console.log(coffees);
             $('#myForm')[0].reset();
+        }
 
-        } else {
+        else {
             msg.innerHTML = "please enter a new coffee name";
-
             setTimeout(function () {
                 msg.remove();
             }, 3000);
         }
+
     } else {
         msg.innerHTML = "please enter a coffee name";
-
         setTimeout(function () {
             msg.remove();
         }, 3000);
-
-
-    // if (userInput.value === '') {
-    //     msg.innerHTML = "please enter a new coffee name";
-    //
-    //     setTimeout(function () {
-    //         msg.remove();
-    //     }, 3000);
-    //
-    // }
-
-    // if (testCoffee(userInput.value)) {
-    //     msg.innerHTML = "please enter a new coffee name";
-    //
-    //     setTimeout(function () {
-    //         msg.remove();
-    //     }, 3000);
-    // }else {
-
-    // var newCoffee = {
-    //     id: id,
-    //     name: userInput,
-    //     roast: userSelectRoast
-    // };
-    // coffees.push(newCoffee);
-
 }
 updateCoffees(e);
-
 }
 
 
