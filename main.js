@@ -1,5 +1,7 @@
 "use strict";
+//ORIGINAL GITHUB:  https://github.com/gocodeup/coffee-project.git
 
+//6/   90b60a8aba6880677e1df4adeb14b2662717/  80e
 //taking array input from 'rendered coffees' and organizing it
 function renderCoffee(coffee) {
     var html = '<div class="coffee">';
