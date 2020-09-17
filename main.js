@@ -82,6 +82,7 @@ function addUsersCoffee(e) {
                 roast: userSelectRoast
             };
             coffees.push(newCoffee);
+            $('#myForm')[0].reset();
 
         } else {
             msg.innerHTML = "please enter a new coffee name";
@@ -124,6 +125,7 @@ function addUsersCoffee(e) {
 
 }
 updateCoffees(e);
+
 }
 
 
@@ -136,6 +138,8 @@ function testCoffeeNameIsNew(userInput) {
     }
     return coffeeExists;
 }
+
+
 
 
 var coffeeListBody = document.querySelector('#coffees');
