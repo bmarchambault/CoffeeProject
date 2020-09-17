@@ -1,0 +1,25 @@
+.cssBody{
+    font-family: 'Roboto Slab', serif;
+}
+
+.borderPic {
+    width: 100%;
+    height: 111px;
+    /*background-color: cornsilk;*/
+    background-image: url("brown-coffee-bean-942802.jpg");
+    background-size: cover;
+}
+
+b{
+    color: black;
+    /*font-size: 1em;*/
+}
+
+p{
+    color: gray;
+    /*font-size: .5em;*/
+}
+
+h1{
+    background-color: #B86F60;
+}
