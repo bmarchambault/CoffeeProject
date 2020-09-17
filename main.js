@@ -22,11 +22,13 @@ function renderCoffees(coffees) {
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     var selectedRoast = roastSelection.value;
-    var userInput = userSearch.value.toLowerCase();
+
+
+    // var userInput = userSearch.value.toLowerCase();
     var filteredCoffees = []; //create empty array to hold the for each return value
     coffees.forEach(function (coffee) {
         var arrayNameLower = coffee.name.toLowerCase();
-        if (arrayNameLower.startsWith(userSearchInput) && (coffee.roast === selectedRoast)) {
+        if (arrayNameLower.startsWith(userSearchInputValueLower) && (coffee.roast === selectedRoast)) {
             filteredCoffees.push(coffee);
         }
     });
@@ -107,17 +109,20 @@ function testCoffeeNameIsNew(userInput) {
 
 var coffeeListBody = document.querySelector('#coffees');
 var roastSelection = document.querySelector('#roast-selection');
-var userSearch = document.querySelector('#user-search')
-var userSearchInput = userSearch.value.toLowerCase();
-var roastSelection2 = document.querySelector('#roast-selection2');
 
+// var userSearch = document.querySelector('#user-search')
+
+var roastSelection2 = document.querySelector('#roast-selection2');
 var submitButton = document.querySelector('#submitNewCoffee');
 submitButton.addEventListener('click', addUsersCoffee);
 
 coffeeListBody.innerHTML = renderCoffees(coffees); //displaying the output from the 'rendered coffee & rendered coffees' functions to html table
 
 roastSelection.addEventListener('change', updateCoffees); //updates user selection list using the top three functions...
-userSearch.addEventListener('keyup', updateCoffees);
+var userSearchInputField = document.getElementById('user-search');
+var userSearchInputValue = document.getElementById('user-search').value;
+var userSearchInputValueLower = userSearchInputValue.toString().toLowerCase();
+userSearchInputField.addEventListener('keyup', updateCoffees);
 
 
 //original bobbie and shelby function:
