@@ -1,0 +1,22 @@
+<application>
+  <component name="FileTypeManager" version="17">
+    <extensionMap>
+      <mapping pattern=",gitignore" type="GitIgnore file" />
+      <mapping ext="gradle.kts" type="Kotlin" />
+      <mapping ext="main.kts" type="Kotlin" />
+      <mapping ext="mp3" type="Native" />
+      <mapping ext="mp4" type="Native" />
+      <mapping pattern="Helpful Links" type="PLAIN_TEXT" />
+      <mapping pattern="JPATestConsole" type="PLAIN_TEXT" />
+      <mapping pattern="jquery notes" type="PLAIN_TEXT" />
+      <mapping pattern="git-test" type="PLAIN_TEXT" />
+      <mapping pattern="dog_db_seeder" type="PLAIN_TEXT" />
+      <mapping pattern="readMe" type="PLAIN_TEXT" />
+      <mapping pattern="plan" type="PLAIN_TEXT" />
+      <mapping pattern=".cods" type="PLAIN_TEXT" />
+      <mapping pattern="bankReadMe" type="PLAIN_TEXT" />
+      <mapping pattern="mySQLConsole" type="PLAIN_TEXT" />
+      <removed_mapping ext="mp3" approved="true" type="Play" />
+    </extensionMap>
+  </component>
+</application>
