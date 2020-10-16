@@ -7,8 +7,8 @@
       <mapping ext="mp3" type="Native" />
       <mapping ext="mp4" type="Native" />
       <mapping pattern="Helpful Links" type="PLAIN_TEXT" />
-      <mapping pattern="jquery notes" type="PLAIN_TEXT" />
       <mapping pattern="JPATestConsole" type="PLAIN_TEXT" />
+      <mapping pattern="jquery notes" type="PLAIN_TEXT" />
       <mapping pattern="git-test" type="PLAIN_TEXT" />
       <mapping pattern="dog_db_seeder" type="PLAIN_TEXT" />
       <mapping pattern="readMe" type="PLAIN_TEXT" />
