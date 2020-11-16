@@ -15,6 +15,7 @@
       <mapping pattern="plan" type="PLAIN_TEXT" />
       <mapping pattern=".cods" type="PLAIN_TEXT" />
       <mapping pattern="bankReadMe" type="PLAIN_TEXT" />
+      <mapping pattern="Notes" type="PLAIN_TEXT" />
       <mapping pattern="mySQLConsole" type="PLAIN_TEXT" />
       <removed_mapping ext="mp3" approved="true" type="Play" />
     </extensionMap>
